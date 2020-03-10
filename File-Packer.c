@@ -59,6 +59,7 @@ int main(int argc, char *argv[]) {
 
         // will contain the options provided through arguments
         // options start from 2nd argument
+<<<<<<< HEAD
         enum Options enable_options[10],
                      enable_features[4];
         char buffer[10];
@@ -111,6 +112,20 @@ int main(int argc, char *argv[]) {
 
         // Enable the options provided to the program.
         for (char i = 2; i < options_count+2; i++)
+=======
+        enum Options enable_options[argc-2];
+        char buffer[10];
+
+        // Convert arguments to string buffer
+        for (char i = 2; i < argc; i++)
+        {
+            strcpy(buffer, argv[i]);
+            enable_options[i-2] = buffer[1];
+        }
+
+        // Enable the options provided to the program.
+        for (char i = 2; i < options_count; i++)
+>>>>>>> fecb9df97a357a73b4f0fe72a07ba3da78a54a1d
         {
             switch (enable_options[i-2])
             {
@@ -146,7 +161,11 @@ int main(int argc, char *argv[]) {
                 break;
 
             default:
+<<<<<<< HEAD
                 printf("Not an Option %s, ", argv[i]);
+=======
+                printf("Not an Option %s", argv[i]);
+>>>>>>> fecb9df97a357a73b4f0fe72a07ba3da78a54a1d
                 break;
             }
         }
@@ -154,6 +173,7 @@ int main(int argc, char *argv[]) {
 
 
         // Convert arguments to string buffer
+<<<<<<< HEAD
         for (char i = options_count+2; i < argc; i++)
         {
             strcpy(buffer, argv[i]);
@@ -180,6 +200,34 @@ int main(int argc, char *argv[]) {
             
             default:
                 printf("Not an Option %s, ", argv[i]);
+=======
+        for (char i = options_count; i < argc; i++)
+        {
+            strcpy(buffer, argv[i]);
+            enable[i-2] = buffer[1];
+        }
+
+        // Enable the options provided to the program.
+        for (char i = 2; i < argc; i++)
+        {
+            switch (enable[i-2])
+            {
+            case 'P':
+                OPTIONS[P] = 1;
+                break;
+            case 'o':
+                OPTIONS[o] = 1;
+                break;
+            case 'r':
+                OPTIONS[r] = 1;
+                break;
+            case 't':
+                OPTIONS[t] = 1;
+                break;
+            
+            default:
+                printf("Not an Option %s", argv[i]);
+>>>>>>> fecb9df97a357a73b4f0fe72a07ba3da78a54a1d
                 break;
             }
         }
